@@ -1,30 +1,39 @@
---- assignment @ deepklarity ---
+# ResumeIQ – AI-Powered Resume Analyzer
+ResumeIQ is an **AI-driven resume parser and reviewer** that helps candidates understand and improve their resumes.
+Users can upload a PDF resume, which is then analyzed by Google Gemini (via LangChain) to extract structured data, provide resume ratings, and generate personalized upskilling suggestions — all displayed through a sleek React UI.
 
-A minimal resume parser and reviewer: upload a PDF resume, backend extracts structured fields using Gemini (Google GenAI), stores results in Postgres, and a small React UI displays the parsed data and history.
-
-## What this project does
-* Accepts PDF resumes via a simple upload UI.
-* Extracts resume text and asks Gemini to return a strict JSON object with fields such as name, email, phone, links, summary, work_experience, education, technical_skills, soft_skills, projects, certifications, resume_rating, improvement_areas and upskill_suggestions.
-* Saves parsed fields into Postgres.
-* Shows a friendly frontend with:
-  * Upload tab (drag & drop or click)
-  * History tab (list of past uploads)
-  * Details modal with the fully parsed resume
+## Features
+* **PDF Upload:** Drag & drop or select a resume for instant parsing.
+* **AI-Powered Extraction:** Uses **Gemini API (Google GenAI)** to extract key details like:
+  - Name, Email, Phone, Links
+  - Summary, Work Experience, Education
+  - Technical & Soft Skills
+  - Projects, Certifications
+  - Resume Rating, Improvement Areas, Upskill Suggestions
+* **Database:** Structured data stored securely in **PostgreSQL**.
+* **Frontend Interface:** 
+  - Upload tab – upload and parse resumes  
+  - History tab – list of previous uploads  
+  - Details modal – view full parsed details
+ * **Fully Containerized:** Easily run the app using **Docker Compose**.
 
 ## Tech stack
-* Backend: FastAPI, asyncpg, pdfplumber, google-generativeai SDK
-* Frontend: React (Vite), single-file app at `frontend/src/App.jsx`
-* DB: PostgreSQL (containerized)
-* Run everything with Docker Compose
+* **Backend**: FastAPI, asyncpg, pdfplumber, google-generativeai SDK
+* **Frontend:** React (Vite), single-file app at `frontend/src/App.jsx`
+* **DB:** PostgreSQL (containerized)
+* **AI Model:** Gemini API via LangChain  
+* **DevOps:** Docker, Docker Compose
+
+  ---
 
 ## Quick start (recommended)
-1. Clone the repo:
+### 1. Clone the repo:
    ```
    git clone <repo-url>
    cd <repo-directory>
    ```
 
-2. Modify a `.env` file in the repo root with these values:
+### 2. Modify a `.env` file in the repo root with these values:
 
    ```
    GOOGLE_API_KEY=your_google_ai_studio_key_here
@@ -32,18 +41,18 @@ A minimal resume parser and reviewer: upload a PDF resume, backend extracts stru
 
    * Add your Gemini/Generative AI API key from Google AI Studio as `GOOGLE_API_KEY`
 
-3. Start with Docker Compose:
+### 3. Start with Docker Compose:
    ```
    docker compose up -d --build
    ```
 
-   * Frontend: [http://localhost:5173]
-   * Backend API docs: [http://localhost:8000/docs]
-   * Postgres: port 5432 (containerized)
+   - Frontend: [http://localhost:5173]
+   - Backend API docs: [http://localhost:8000/docs]
+    - Postgres: port 5432 (containerized)
 
 4. Open the UI in your browser at `http://localhost:5173`.
-   * Drag & drop or click the upload area to send a PDF.
-   * After parsing, a detailed card appears. Close it to see the entry in History.
+   - Drag & drop or click the upload area to send a PDF.
+   - After parsing, a detailed card appears. Close it to see the entry in History.
 
 
 ## Files of interest
